@@ -13,7 +13,7 @@ const password = process.env.BOOTSTRAP_OWNER_PASSWORD;
 const name = process.env.BOOTSTRAP_OWNER_NAME?.trim() || "Racana Owner";
 
 if (!email) throw new Error("BOOTSTRAP_OWNER_EMAIL is required.");
-if (!password || password.length < 10) throw new Error("BOOTSTRAP_OWNER_PASSWORD must contain at least 10 characters.");
+if (!password || password.length < 8) throw new Error("BOOTSTRAP_OWNER_PASSWORD must contain at least 8 characters.");
 
 let [user] = await db.select().from(users).where(eq(users.email, email)).limit(1);
 if (!user) {
