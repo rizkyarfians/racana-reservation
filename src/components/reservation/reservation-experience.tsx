@@ -168,9 +168,9 @@ export function ReservationExperience() {
                   <ArrowLeft className="size-4" /> Back
                 </Button>
                 {step < steps.length - 1 ? (
-                  <Button type="button" size="lg" className="rounded-full px-7" onClick={next}>Continue <ArrowRight className="size-4" /></Button>
+                  <Button key={`continue-${step}`} type="button" size="lg" className="rounded-full px-7" onClick={(event) => { event.preventDefault(); void next(); }}>Continue <ArrowRight className="size-4" /></Button>
                 ) : (
-                  <Button type="submit" size="lg" className="rounded-full px-7" disabled={form.formState.isSubmitting}>
+                  <Button key="submit" type="submit" size="lg" className="rounded-full px-7" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4" />} Submit request
                   </Button>
                 )}
