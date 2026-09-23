@@ -11,7 +11,9 @@ test("customer can submit a reservation request", async ({ page }) => {
   const firstTime = page.locator("button").filter({ hasText: /spots left/i }).first();
   await expect(firstTime).toBeVisible();
   await firstTime.click();
+  await expect(firstTime).toHaveClass(/bg-primary/);
   await page.getByRole("button", { name: /continue/i }).click();
+  await expect(page.getByRole("heading", { name: /who is the reservation for/i })).toBeVisible();
   await page.getByLabel("Full name").fill("E2E Guest");
   await page.getByLabel("Email").fill("guest@example.com");
   await page.getByLabel("Phone").fill("+62 812 3456 7890");

@@ -153,10 +153,10 @@ export function ReservationExperience() {
               </div>
 
               <div className="min-h-[430px]">
-                {step === 0 && <DateStep value={values.date} onChange={(value) => form.setValue("date", value, { shouldValidate: true })} error={form.formState.errors.date?.message} today={today} />}
-                {step === 1 && <TypeStep value={values.type} onChange={(value) => form.setValue("type", value, { shouldValidate: true })} />}
-                {step === 2 && <GuestsStep value={values.guests} onChange={(value) => form.setValue("guests", value, { shouldValidate: true })} />}
-                {step === 3 && <TimeStep value={values.time} slots={slots} loading={loadingSlots} error={availabilityError || form.formState.errors.time?.message} onChange={(value) => form.setValue("time", value, { shouldValidate: true })} />}
+                {step === 0 && <DateStep value={values.date} onChange={(value) => form.setValue("date", value, { shouldDirty: true })} error={form.formState.errors.date?.message} today={today} />}
+                {step === 1 && <TypeStep value={values.type} onChange={(value) => form.setValue("type", value, { shouldDirty: true })} />}
+                {step === 2 && <GuestsStep value={values.guests} onChange={(value) => form.setValue("guests", value, { shouldDirty: true })} />}
+                {step === 3 && <TimeStep value={values.time} slots={slots} loading={loadingSlots} error={availabilityError || form.formState.errors.time?.message} onChange={(value) => form.setValue("time", value, { shouldDirty: true })} />}
                 {step === 4 && <ContactStep form={form} />}
                 {step === 5 && <RequestStep form={form} />}
                 {step === 6 && <ReviewStep values={values} />}
