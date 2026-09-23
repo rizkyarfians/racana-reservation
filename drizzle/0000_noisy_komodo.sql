@@ -154,7 +154,7 @@ ALTER TABLE `member` ADD CONSTRAINT `member_user_id_user_id_fk` FOREIGN KEY (`us
 ALTER TABLE `reservation_audit_logs` ADD CONSTRAINT `reservation_audit_logs_reservation_id_reservations_id_fk` FOREIGN KEY (`reservation_id`) REFERENCES `reservations`(`id`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE `reservation_audit_logs` ADD CONSTRAINT `reservation_audit_logs_actor_user_id_user_id_fk` FOREIGN KEY (`actor_user_id`) REFERENCES `user`(`id`) ON DELETE set null ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE `reservation_slot_allocations` ADD CONSTRAINT `reservation_slot_allocations_reservation_id_reservations_id_fk` FOREIGN KEY (`reservation_id`) REFERENCES `reservations`(`id`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE `reservation_slot_allocations` ADD CONSTRAINT `reservation_slot_allocations_slot_start_reservation_capacity_slots_slot_start_fk` FOREIGN KEY (`slot_start`) REFERENCES `reservation_capacity_slots`(`slot_start`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE `reservation_slot_allocations` ADD CONSTRAINT `allocation_slot_start_fk` FOREIGN KEY (`slot_start`) REFERENCES `reservation_capacity_slots`(`slot_start`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE `session` ADD CONSTRAINT `session_user_id_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 CREATE INDEX `account_user_idx` ON `account` (`user_id`);--> statement-breakpoint
 CREATE INDEX `email_reservation_idx` ON `email_deliveries` (`reservation_id`,`created_at`);--> statement-breakpoint

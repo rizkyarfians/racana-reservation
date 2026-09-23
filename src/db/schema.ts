@@ -2,6 +2,7 @@ import {
   boolean,
   check,
   datetime,
+  foreignKey,
   index,
   int,
   json,
@@ -187,13 +188,16 @@ export const reservationSlotAllocations = mysqlTable(
     reservationId: varchar("reservation_id", { length: 36 })
       .notNull()
       .references(() => reservations.id, { onDelete: "cascade" }),
-    slotStart: datetime("slot_start", { mode: "date", fsp: 3 })
-      .notNull()
-      .references(() => reservationCapacitySlots.slotStart, { onDelete: "cascade" }),
+    slotStart: datetime("slot_start", { mode: "date", fsp: 3 }).notNull(),
     guestCount: int("guest_count").notNull(),
   },
   (table) => [
     primaryKey({ columns: [table.reservationId, table.slotStart] }),
+    foreignKey({
+      columns: [table.slotStart],
+      foreignColumns: [reservationCapacitySlots.slotStart],
+      name: "allocation_slot_start_fk",
+    }).onDelete("cascade"),
     index("allocation_slot_idx").on(table.slotStart),
   ],
 );
