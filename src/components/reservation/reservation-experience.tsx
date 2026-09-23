@@ -53,6 +53,12 @@ export function ReservationExperience() {
       website: "",
     },
   });
+  useEffect(() => {
+    form.register("date");
+    form.register("type");
+    form.register("guests");
+    form.register("time");
+  }, [form]);
   // React Hook Form intentionally exposes a subscription-based watch API.
   // eslint-disable-next-line react-hooks/incompatible-library
   const values = form.watch();

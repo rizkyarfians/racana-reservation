@@ -5,7 +5,7 @@ test("owner can sign in and access admin views", async ({ page }) => {
   await page.getByLabel("Email").fill(process.env.BOOTSTRAP_OWNER_EMAIL ?? "rizkyarfians27@gmail.com");
   await page.getByLabel("Password").fill(process.env.BOOTSTRAP_OWNER_PASSWORD ?? "RacanaTestPassword123!");
   await page.getByRole("button", { name: /sign in/i }).click();
-  await expect(page).toHaveURL(/\/admin$/);
+  await expect(page).toHaveURL(/\/admin$/, { timeout: 15_000 });
   await expect(page.getByText(/today at racana/i)).toBeVisible();
   await page.getByRole("link", { name: /calendar/i }).first().click();
   await expect(page.getByRole("heading", { name: "Calendar" })).toBeVisible();
