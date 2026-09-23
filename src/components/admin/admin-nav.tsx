@@ -30,7 +30,7 @@ export function AdminNav({ userName, isOwner }: { userName: string; isOwner: boo
       <div className="border-t pt-4">
         <p className="px-3 text-sm font-semibold">{userName}</p>
         <p className="px-3 text-xs capitalize text-muted-foreground">{isOwner ? "Owner" : "Admin"}</p>
-        <form action={signOutAction} className="mt-3"><Button variant="ghost" className="w-full justify-start"><LogOut className="size-4" /> Sign out</Button></form>
+        <form action={signOutAction} className="mt-3"><Button type="submit" variant="ghost" className="w-full justify-start"><LogOut className="size-4" /> Sign out</Button></form>
       </div>
     </>
   );
